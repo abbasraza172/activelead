@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  user: engintech
+  password: 12345678
+  pool: 5
+development:
+  <<: *default
+  database: activelead_development
+test:
+  <<: *default
+  database: activelead_test
+production:
+  <<: *default
+  database: activelead_production
