@@ -1,0 +1,53 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require main/plugins/pace-master/themes/blue/pace-theme-flash
+ *= require main/plugins/uniform/css/uniform.default.min
+ *= require main/plugins/bootstrap/css/bootstrap.min
+ *= require main/plugins/fontawesome/css/font-awesome
+ *= require main/plugins/line-icons/simple-line-icons
+ *= require main/plugins/waves/waves.min
+ *= require main/plugins/switchery/switchery.min
+ *= require main/plugins/3d-bold-navigation/css/style
+ *= require main/plugins/slidepushmenus/css/component
+ *= require main/plugins/weather-icons-master/css/weather-icons.min
+ *= require main/plugins/metrojs/MetroJs.min
+ *= require main/plugins/toastr/toastr.min
+ *= require main/plugins/gridgallery/css/component
+ *= require main/plugins/fullcalendar/fullcalendar.min
+ *= require main/plugins/bootstrap-datepicker/css/datepicker3
+ *= require main/base
+ *= require main/layout
+ *= require main/animate
+ *= require main/skeleton
+ *= require main/font-awesome.min
+ *= require main/colors/bbb
+ *= require main/colors/ccc
+ *= require main/colors/ddd
+ *= require main/colors/eee
+ *= require main/colors/fff
+ *= require main/colors/ggg
+ *= require main/colors/hhh
+ *= require main/colors/iii
+ *= require main/colors/jjj
+ *= require main/colors/kkk
+ *= require main/colors/lll
+ *= require main/colors/mmm
+ *= require main/colors/nnn
+ *= require main/colors/ooo
+ *= require main/colors/ppp
+ *= require main/colors/qqq
+ *= require main/colors/rrr
+ *= require main/colors/sss
+ *= require main/colors/ttt
+ *= require main/colors/aaa
+ */
