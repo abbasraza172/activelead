@@ -1,195 +1,139 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Admax - Login</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
-	<link rel="shortcut icon" href="favicon.png">
-	<!---CSS Files-->
-	<link rel="stylesheet" href="css/core.css">
-	<link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/inputs.css">
-    <link rel="stylesheet" href="css/ui.css">
-    <link rel="stylesheet" href="css/anims.css">
-    <link rel="stylesheet" href="css/icons.css">
-	<link rel="stylesheet" href="css/global.css">
-	<!---jQuery Files-->
-	<script src="js/jquery.js"></script>
-	<script src="js/inputs.js"></script>
-    <script src="js/functions.js"></script>
-</head>
 
 <body>
+<!-- Primary Page Layout
+================================================== -->
+<br>
 
-	<div id="wrapper">
+<!-- Pricing -->
+<section class="pricing">
 
-		<div id="login-body">
+  <!-- Container -->
+  <div class="container">
 
-			<form id="login-form" class="show" method="get" action="dash.html">
+    <!-- Section Title -->
+    <div class="sixteen columns section-title">
+      <h1>Choose<span>your package</span></h1>
+      <div class="title-bullet"><span></span></div>
+    </div>
 
-				<div id="login">
+    <!-- Medium Price Table -->
+    <div class="one-third column">
+      <div class="price-table">
+        <header class="price-table-header">
+          <h3>Plan 1</h3>
+          <span>23$</span>
+        </header>
+        <div class="price-table-body">
+          <ul>
+            <li><i class="fa fa-suitcase"></i>Lorem ipsum dolor</li>
+            <li><i class="fa fa-folder-open"></i>Sit amet consescetur</li>
+            <li><i class="fa fa-road"></i>Adipiscing elit etiam</li>
+          </ul>
+          <a href="#" class="button color">Purchase now</a>
+        </div>
+      </div>
+    </div>
 
-					<div id="login-user">
-						<div class="icon-user"><span class="arrow">"</span></div>
-						<input type="text" id="username" class="login-input required" placeholder="Username" value="novalex" autocomplete="off">
-						<div id="user-select">
-							<ul class="grad2">
-								<li class="sel">
-									<img src="img/avatars/alex.jpg" alt="User avatar">
-									<div class="av-overlay"></div><span>novalex</span></li>
-								<li><img src="img/avatars/michael.jpg" alt="User avatar">
-									<div class="av-overlay"></div><span>m1chael</span></li>
-								<li><img src="img/avatars/johnny.jpg" alt="User avatar">
-									<div class="av-overlay"></div><span>Johnny 1337</span></li>
-							</ul>
-						</div>
+    <!-- Large Price Table -->
+    <div class="one-third column">
+      <div class="price-table large">
+        <header class="price-table-header">
+          <h3>Plan 2</h3>
+          <span>26$</span>
+        </header>
+        <div class="price-table-body">
+          <ul>
+            <li><i class="fa fa-suitcase"></i>Lorem ipsum dolor</li>
+            <li><i class="fa fa-folder-open"></i>Sit amet consescetur</li>
+            <li><i class="fa fa-road"></i>Adipiscing elit etiam</li>
+          </ul>
+          <a href="#" class="button color">Purchase now</a>
+        </div>
+      </div>
+    </div>
 
-						<div id="register">
-							<p>Username not found.</p>
-							<button type="button" id="reg-btn" class="green btn-s">Register</button>
-						</div>
+    <!-- Medium Price Table -->
+    <div class="one-third column">
+      <div class="price-table">
+        <header class="price-table-header">
+          <h3>Plan 3</h3>
+          <span>29$</span>
+        </header>
+        <div class="price-table-body">
+          <ul>
+            <li><i class="fa fa-suitcase"></i>Lorem ipsum dolor</li>
+            <li><i class="fa fa-folder-open"></i>Sit amet consescetur</li>
+            <li><i class="fa fa-road"></i>Adipiscing elit etiam</li>
+          </ul>
+          <a href="#" class="button color">Purchase now</a>
+        </div>
+      </div>
+    </div>
 
-					</div>
+  </div><!-- / Container -->
 
-					<div id="login-pass">
-						<span class="icon-securityalt-shieldalt"></span>
-                        <span id="forgot-psw" style="display: none">Forgot?</span>
-						<input type="password" id="password" class="login-input required passwf" placeholder="Password">
-					</div>
+</section><!-- / Pricing -->
 
-				</div>
 
-				<div id="avatar"><img src="img/avatars/alex.jpg" alt="Selected user avatar"><div id="av-overlay"></div></div>
 
-				<button id="login-btn" type="submit" class="button submit">Log in</button>
+<script type="text/javascript">
+    $('.tweet').twittie();
+</script>
 
-			</form>
+<!--[if lt IE 10]>
+<script type="text/javascript">
+    $(document).ready(function(){
 
-            <form id="register-form" action="http://amxui.novalx.com/dash.html">
-                <div id="register-inner">
-                    <input type="text" id="reg-user" class="login-input required" placeholder="Username" autocomplete="off">
-                    <input type="password" id="reg-pass" class="login-input required" placeholder="Password">
-                    <input type="text" id="reg-email" class="login-input required email" placeholder="E-mail">
-                </div>
-                <button id="register-btn" type="submit" class="button submit">Register</button>
-            </form>
-
-			<div id="login-action">
-				<div id="logo"></div>
-				<div id="rb-check-cont">
-					<label for="rb-check">Remember me</label>
-					<input type="checkbox" name="remember" id="rb-check" checked>
-				</div>
-			</div>
-		</div>
-
-	</div><!--END WRAPPER-->
-
-	<div id="load"><div id="spinner"></div><div id="load-inner"></div></div>
-
-	<!---jQuery Code-->
-	<script type='text/javascript'>
-    $('#login-body').hide();
-    $(window).load( function() {
-        $('#load').fadeOut(600, function() {
-            $('#login-body').fadeIn(10, function() {
-                $(this).addClass('show');
-                $('#password').focus();
-                if ($(window).width() <= 480) $('#password').blur();
-            });
+        $(".lightbox-close").click(function(){
+            $(".lightbox, .lightbox-overlay").hide();
         });
+
+        $(".feature-selector-buttons li").click(function(){
+            $('.feature-selector-frame img').hide();
+        });
+
     });
+</script>
+<![endif]-->
 
-    var browserSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
-    if (browserSafari) $('#wrapper').addClass('safari-fix');
 
-    if ($.storage() == true) {
-        localStorage.removeItem('user-name');
-        localStorage.removeItem('user-avatar');
-    } else {
-        function lsnotif() {
-            $('#wrapper').append('<div class="notif orange full slideUp">LocalStorage is disabled. Your settings will not be saved!<span class="icon icon-resistor"></span><p class="nt-det">Upgrade your browser or enable local data storage.</p></div>');
-        };
-        setTimeout(lsnotif, 2000);
-        $.fn.notif();
-    }
 
-    $('#login-user .icon-user').click( function() {
-    	$('#login-user').toggleClass('showusr');
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#styleswitcher li").click(function(){
+            var colorFile = $(this).data("color");
+            $("link").last().attr("href","main/colors/"+colorFile+".css");
+            $("#styleswitcher li").empty();
+            $(this).html('<i class="fa fa-check"></i>');
+        });
+
+
+        $(function () {
+            function first() {
+                $("#styleswitcher").animate({left: "+=250px"}, 500);
+                $(this).one("click", second);
+            }
+            function second() {
+                $("#styleswitcher").animate({left: "-=250px"}, 500);
+                $(this).one("click", first);
+            }
+            $("#styleswitcher .trigger").one("click", first);
+        });
+
     });
+</script>
+<!--  STYLESWITCHER ================================================== -->
 
-    $('#user-select li').click( function() {
-    	$('#login-user').removeClass('showreg showusr');
-    	$(this).addClass('sel').siblings('.sel').removeClass('sel');
-    	var name = $(this).children('span').text();
-    	     img = $(this).children('img').attr('src');
-    	$('#username').val(name).removeClass('error').addClass('valid');
-    	$('#avatar img').attr('src', img).fadeIn(300);
-    	$('#login-user').find('.input-error').remove();
-    	$('#login-pass').find('.input-error').remove();
-        $('#forgot-psw').fadeOut(200);
-    	$('#password').removeClass('error').val('').focus();
 
-        if ($.storage() == true) {
-            localStorage.setItem('user-name',name);
-            localStorage.setItem('user-avatar',img);
-        };
-    });
 
-    var users = ["novalex","m1chael","Johnny 1337"];
-    var username = $('#username');
-    var typeDelay;
-    $(username).keyup(function(){
-        clearTimeout(typeDelay);
-        $('#user-select').find('.sel').removeClass('sel');
-        typeDelay = setTimeout(checkuser, 500);
-    });
-    function checkuser() {
-    	var usrval = username.val();
-    	    usrlen = usrval.length;
-    	if ($.inArray(usrval, users) == -1 && usrlen > 0) {
-    		$('#avatar img').fadeOut(300);
-    		$('#login-user').addClass('showreg').removeClass('showusr');
-    		$('#user-select').find('.sel').removeClass('sel');
-    	} else if (usrlen == 0) {
-    		$('#avatar img').fadeOut(200);
-    		$('#login-user').removeClass('showreg');
-    	} else {
-    		$('#avatar img').fadeIn(300);
-    		$('#login-user').removeClass('showreg showusr');
-    		$('#user-select li').each( function() {
-    			var name = $(this).find('span').text();
-    			     img = $(this).children('img').attr('src');
-    			if (name == usrval) {
-    				$(this).addClass('sel');
-					$('#avatar img').attr('src', img);
-    			}
-    		});
-            $('#login-pass').find('.input-error').remove();
-            $('#password').removeClass('error').focus();
-    	};
-    };
 
-    $('.input-error').click( function() {
-        var trigger = $(this).data('trigger');
-        $(this).offsetParent().find('input').eq(trigger).focus();
-    });
 
-    $('#password').keyup( function() { 
-        if ($(this).val()) $('#forgot-psw').fadeOut(200)
-        else $('#forgot-psw').fadeIn(300);
-    });
 
-    $('#reg-btn').click( function() {
-        $('#login-form').removeClass('show');
-        $('#register-form').addClass('show');
-        $('#reg-user').focus();
-    });
 
-    $('#rb-check').checkfn();
 
-    $('#login-form, #register-form').validate();
-
-    </script>
+<!-- End Document
+================================================== -->
 </body>
-</html>

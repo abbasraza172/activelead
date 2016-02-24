@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require admin/jquery
-//= require jquery_ujs
 //= require admin/jquery-ui
 //= require admin/functions
 //= require admin/inputs

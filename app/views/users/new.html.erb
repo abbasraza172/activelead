@@ -1,157 +1,162 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Inputs</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
-	<link rel="shortcut icon" href="favicon.png">
-	<!---CSS Files-->
-	<link rel="stylesheet" href="css/core.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ui.css">
-    <link rel="stylesheet" href="css/inputs.css">
-    <link rel="stylesheet" href="css/icons.css">
-    <link rel="stylesheet" href="css/anims.css">
-	<link rel="stylesheet" href="css/global.css">
-	<!---jQuery Files-->
-	<script src="js/jquery.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/functions.js"></script>
-	<script src="js/inputs.js"></script>
-    <script src="res/tinymce/tinymce.js"></script>
-</head>
 
-<body>
+<%= form_for @user do |f| %>
 
-	<div id="wrapper">
+    <div id="wrapper" class="wrapper1">
 
-        <div id="sidebar">
-            <div id="avatar"><img src="img/avatars/alex.jpg" alt="User avatar"><div id="av-overlay"></div></div>
+      <div id="login-body" class="login-body1">
 
-            <div id="user-notif">
-	            <div id="user-alert" class="icon-subtractshape mod-tg" data-modal="#notif-mod"></div>
-                <div id="coll-sidebar"></div>
+        <form id="login-form" class="show" method="get" action="dash.html">
+
+          <div id="login">
+
+            <div id="login-user">
+              <div class="icon-user"><span class="arrow"></span></div>
+              <%= f.email_field :emailff, autofocus: true, placeholder: "Email", class: "login-input required", id: 'username' %>
             </div>
-            
-            <ul id="nav">
-                <li><a href="dash.html"><span class="nav-icon icon-home"></span>Dash</a></li>
-                <li class="active"><span class="nav-icon icon-dotlist"></span>Inputs</li>
-                <li>
-                    <a href="extras.html"><span class="nav-icon icon-addtolist"></span>Extras</a>
-                    <ul class="sub-nav">
-                        <li><span class="icon icon-lock"></span><a href="403.html">403 Page</a></li>
-                        <li><span class="icon icon-question-sign"></span><a href="404.html">404 Page</a></li>
-                        <li><span class="icon icon-remove"></span><a href="503.html">503 Page</a></li>
-                    </ul>
-                </li>
-                <li id="logout"><a href="index.html.erb"></a><span class="nav-icon icon-shutdown"></span>Log out</li>
-            </ul>
-        </div>
 
-        <div id="content" class="inp-page">
-
-            <div id="inp-form-box" class="box g16 inp-row1">
-                <div class="header">Sample form <span class="box-desc">with validation</span></div>
-                <div class="content gcont no-pad-btm">
-                    <form id="sample-form">
-                        <div class="g3 inp-cont no-pad">
-                            <select class="required inset">
-                                <option selected disabled>Prefix</option>
-                                <option>Mr.</option>
-                                <option>Mrs.</option>
-                            </select>
-                        </div>
-                        <input type="text" class="required g5" placeholder="First Name">
-                        <input type="text" class="required g5" placeholder="Last Name">
-                        <div class="g3">
-                            <input id="age-inp" class="spinner required number inset" placeholder="Age">
-                        </div>
-
-                        <input type="text" class="required email g6" placeholder="E-mail">
-                        <input type="password" class="required match g5" data-match="password" placeholder="Password">
-                        <input type="password" class="required match g5" data-match="password" placeholder="Password again">
-
-                        <input type="text" class="ver-code g4" value="EDB48BO0" disabled>
-                        <input type="text" class="required g4" data-min="8" placeholder="Verification">
-                        <br class="clear">
-
-                        <div class="g4 inp-cont no-pad">
-                            <div class="drop drop-u select g4">
-                                <span class="opt-sel">Card Type</span>
-                                <ul>
-                                  <li>Visa</li>
-                                  <li>Mastercard</li>
-                                  <li>Amex</li>
-                                </ul>
-                                <span class="arrow">'</span>
-                            </div>
-                        </div>
-                        <input type="text" id="card-num" class="cardnum g7" placeholder="Card Number">
-                        <input type="text" class="g2" placeholder="CVV">
-                        <input type="text" id="exp-inp" class="g3" placeholder="Expiry Date">
-
-                        <div class="cont g13">
-                            <input type="checkbox" class="checkbox required big flt-l ig3">
-                            <label class="lh-xxl g13">By checking this box, I am signing a blank check.</label>
-                        </div>
-                        <button type="submit" class="green flt-r g3">Submit</button>
-                    </form>
-                </div>
+            <div id="login-pass">
+              <span class="icon-securityalt-shieldalt"></span>
+              <span id="forgot-psw" style="display: none">Forgot?</span>
+              <%= f.password_field :password, autocomplete: "off", class: 'login-input required passwf', placeholder: 'Password', id: 'password' %>
             </div>
-        </div>
 
-        <!--MODAL WINDOWS-->
-
-        <div class="modal-ov">
-            <div id="notif-mod" class="modal mini box modslideright">
-                <div class="header">
-                    <span class="icon icon-subtractshape"></span>Notifications &amp; Alerts
-                    <button class="mini close"><span class="icon icon-remove no-mg"></span></button>
-                </div>
-                <div class="mod-body">
-                    <p class="al-c">No notifications or alerts to display</p>
-                </div>
+            <div id="login-pass">
+              <span class="icon-securityalt-shieldalt"></span>
+              <span id="forgot-psw" style="display: none">Forgot?</span>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'login-input required passwf', placeholder: 'Password Confirmation', id: 'password' %>
             </div>
-        </div>
 
-	</div><!--END WRAPPER-->
+            <div id="login-user">
+              <div class="icon-user"><span class="arrow"></span></div>
+              <%= f.text_field :first_name, class: 'login-input required', placeholder: 'First Name', id: 'username' %>
+            </div>
 
-	<div id="load"><div id="spinner"></div></div>
+            <div id="login-user">
+              <div class="icon-user"><span class="arrow"></span></div>
+              <%= f.text_field :last_name, class: 'login-input required', placeholder: 'Last Name', id: 'username' %>
+            </div>
 
-	<!---jQuery Code-->
-	<script type='text/javascript'>
+          </div>
 
-	$.fn.loadfns( function() { // PUT FUNCTIONS TO BE EXECUTED ON DOCUMENT READY HERE
-	});
-    
-    $('#age-inp').spinner({ min: 16, max: 99 });
-    $('#sample-form').validate();
 
-    $('#wiz-inst').click( function() {
-        var par = $(this).parents('#overview');
-            pbar = par.find('#wiz-prog-ind');
-            pbarInd = pbar.siblings('span');
-            modMsg = par.find('#wiz-prog-msg');
-        setTimeout( function() { pbar.css('width','10%'); pbarInd.text('10%') }, 400);
-        setTimeout( function() { pbar.css('width','33%'); pbarInd.text('33%') }, 2000);
-        setTimeout( function() { pbar.css('width','60%'); pbarInd.text('60%') }, 4000);
-        setTimeout( function() { pbar.css('width','82%'); pbarInd.text('82%') }, 7000);
-        setTimeout( function() { pbar.css('width','100%'); pbarInd.text('100%');
-            modMsg.html('<span class="icon icon-ok txt-green"></span>All done! Installation completed successfully.') }, 12000);
+          <%= f.submit "Sign up", id: 'login-btn', class: 'button submit' %>
+
+        </form>
+
+      </div>
+
+    </div><!--END WRAPPER-->
+
+    <div id="load"><div id="spinner"></div><div id="load-inner"></div></div>
+
+<% end %>
+
+
+
+
+
+<!---jQuery Code-->
+<script type='text/javascript'>
+    $('#login-body').hide();
+    $(window).load( function() {
+        $('#load').fadeOut(600, function() {
+            $('#login-body').fadeIn(10, function() {
+                $(this).addClass('show');
+                if ($(window).width() <= 480) $('#password').blur();
+            });
+        });
     });
 
-    $('#decimal').spinner({ step: 0.1101001101010011, numberFormat: "n" });
-    $('#datepicker').datepicker();
-    tinymce.init({
-        selector: "#wysiwyg",
-        plugins: [
-            "autolink lists link image charmap print preview anchor",
-            "searchreplace code",
-            "insertdatetime media table contextmenu paste"
-        ],
-        toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image"
+    var browserSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+    if (browserSafari) $('#wrapper').addClass('safari-fix');
+
+    if ($.storage() == true) {
+        localStorage.removeItem('user-name');
+        localStorage.removeItem('user-avatar');
+    } else {
+        function lsnotif() {
+            $('#wrapper').append('<div class="notif orange full slideUp">LocalStorage is disabled. Your settings will not be saved!<span class="icon icon-resistor"></span><p class="nt-det">Upgrade your browser or enable local data storage.</p></div>');
+        };
+        setTimeout(lsnotif, 2000);
+        $.fn.notif();
+    }
+
+    $('#login-user .icon-user').click( function() {
+        $('#login-user').toggleClass('showusr');
     });
 
-    </script>
-</body>
-</html>
+    $('#user-select li').click( function() {
+        $('#login-user').removeClass('showreg showusr');
+        $(this).addClass('sel').siblings('.sel').removeClass('sel');
+        var name = $(this).children('span').text();
+        img = $(this).children('img').attr('src');
+        $('#username').val(name).removeClass('error').addClass('valid');
+        $('#avatar img').attr('src', img).fadeIn(300);
+        $('#login-user').find('.input-error').remove();
+        $('#login-pass').find('.input-error').remove();
+        $('#forgot-psw').fadeOut(200);
+        $('#password').removeClass('error').val('').focus();
+
+        if ($.storage() == true) {
+            localStorage.setItem('user-name',name);
+            localStorage.setItem('user-avatar',img);
+        };
+    });
+
+    var users = ["novalex","m1chael","Johnny 1337"];
+    var username = $('#username');
+    var typeDelay;
+    $(username).keyup(function(){
+        clearTimeout(typeDelay);
+        $('#user-select').find('.sel').removeClass('sel');
+        typeDelay = setTimeout(checkuser, 500);
+    });
+    function checkuser() {
+        var usrval = username.val();
+        usrlen = usrval.length;
+        if ($.inArray(usrval, users) == -1 && usrlen > 0) {
+            $('#avatar img').fadeOut(300);
+            $('#login-user').addClass('showreg').removeClass('showusr');
+            $('#user-select').find('.sel').removeClass('sel');
+        } else if (usrlen == 0) {
+            $('#avatar img').fadeOut(200);
+            $('#login-user').removeClass('showreg');
+        } else {
+            $('#avatar img').fadeIn(300);
+            $('#login-user').removeClass('showreg showusr');
+            $('#user-select li').each( function() {
+                var name = $(this).find('span').text();
+                img = $(this).children('img').attr('src');
+                if (name == usrval) {
+                    $(this).addClass('sel');
+                    $('#avatar img').attr('src', img);
+                }
+            });
+            $('#login-pass').find('.input-error').remove();
+            $('#password').removeClass('error').focus();
+        };
+    };
+
+    $('.input-error').click( function() {
+        var trigger = $(this).data('trigger');
+        $(this).offsetParent().find('input').eq(trigger).focus();
+    });
+
+    $('#password').keyup( function() {
+        if ($(this).val()) $('#forgot-psw').fadeOut(200)
+        else $('#forgot-psw').fadeIn(300);
+    });
+
+    $('#reg-btn').click( function() {
+        $('#login-form').removeClass('show');
+        $('#register-form').addClass('show');
+        $('#reg-user').focus();
+    });
+
+    $('#rb-check').checkfn();
+
+    $('#login-form, #register-form').validate();
+
+</script>
+
+

@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require inputs
-//= require functions
+//= require admin
+//= require main

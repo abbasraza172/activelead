@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
 //= require main/jquery.1.10.2
 //= require main/jquery.loupe.min
 //= require main/tweetie
