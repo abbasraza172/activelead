@@ -10,14 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require admin/jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-//= require admin/flot
+//= require admin/jquery-ui
 //= require admin/functions
 //= require admin/inputs
-//= require admin/jquery-ui
-//= require admin/justgage
 //= require admin/sparkline
+//= require admin/flot
+//= require admin/justgage
 //= require admin/tablesorter
+//= require admin/tinymce
