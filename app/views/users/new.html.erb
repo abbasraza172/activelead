@@ -1,162 +1,94 @@
+<section class="subscribe" id="subscribe">
 
-<%= form_for @user do |f| %>
+  <div class="container">
 
-    <div id="wrapper" class="wrapper1">
+    <div class="sixteen columns contact-form" style="padding-top: 60px;">
+      <h2>Sign Up and get Leads instantly</h2>
+      <%= form_for @user do |f| %>
 
-      <div id="login-body" class="login-body1">
+          <%= f.text_field :first_name, autofocus: true, class: 'textfield', placeholder: 'First Name', id: 'username' %>
 
-        <form id="login-form" class="show" method="get" action="dash.html">
+          <%= f.text_field :last_name, class: 'textfield', placeholder: 'Last Name', id: 'username' %>
 
-          <div id="login">
+          <%= f.email_field :email, placeholder: "Email", class: "textfield required", id: 'username' %>
 
-            <div id="login-user">
-              <div class="icon-user"><span class="arrow"></span></div>
-              <%= f.email_field :emailff, autofocus: true, placeholder: "Email", class: "login-input required", id: 'username' %>
-            </div>
+          <%= f.password_field :password, class: 'textfield ', placeholder: 'Password', id: 'password' %>
 
-            <div id="login-pass">
-              <span class="icon-securityalt-shieldalt"></span>
-              <span id="forgot-psw" style="display: none">Forgot?</span>
-              <%= f.password_field :password, autocomplete: "off", class: 'login-input required passwf', placeholder: 'Password', id: 'password' %>
-            </div>
+          <%= f.password_field :password_confirmation, class: 'textfield', placeholder: 'Password Confirmation', id: 'password' %>
 
-            <div id="login-pass">
-              <span class="icon-securityalt-shieldalt"></span>
-              <span id="forgot-psw" style="display: none">Forgot?</span>
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'login-input required passwf', placeholder: 'Password Confirmation', id: 'password' %>
-            </div>
-
-            <div id="login-user">
-              <div class="icon-user"><span class="arrow"></span></div>
-              <%= f.text_field :first_name, class: 'login-input required', placeholder: 'First Name', id: 'username' %>
-            </div>
-
-            <div id="login-user">
-              <div class="icon-user"><span class="arrow"></span></div>
-              <%= f.text_field :last_name, class: 'login-input required', placeholder: 'Last Name', id: 'username' %>
-            </div>
-
-          </div>
+          <%= f.hidden_field :plan_id, value: params[:plan_id] || f.object.plan_id%>
+          <%= f.hidden_field :stripe_token%>
 
 
-          <%= f.submit "Sign up", id: 'login-btn', class: 'button submit' %>
+          <%= text_field_tag :card_number,"", :class=>"textfield credit_card_number",:placeholder => "Enter Card Number"%>
 
-        </form>
+          <%= text_field_tag :cvc_code, "" ,:class=>"textfield credit_card_cvc",:placeholder => "Enter CVC Code" %>
 
-      </div>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "textfield"} %>
 
-    </div><!--END WRAPPER-->
-
-    <div id="load"><div id="spinner"></div><div id="load-inner"></div></div>
-
-<% end %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",class: "textfield"} %>
 
 
+          <%= f.button "Sign up", class: 'button color',:onclick => "checkout();return false;",:id =>"checkout-button" %>
+
+      <% end %>
+
+    </div>
+  </div>
+</section>
 
 
+<%= javascript_include_tag "https://js.stripe.com/v2/" %>
 
-<!---jQuery Code-->
-<script type='text/javascript'>
-    $('#login-body').hide();
-    $(window).load( function() {
-        $('#load').fadeOut(600, function() {
-            $('#login-body').fadeIn(10, function() {
-                $(this).addClass('show');
-                if ($(window).width() <= 480) $('#password').blur();
-            });
-        });
-    });
+<script>
 
-    var browserSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
-    if (browserSafari) $('#wrapper').addClass('safari-fix');
+    function stripeResponseHandler(status, response) {
+        $("*").css("cursor", "default");
+        if (response.error) {
+            $('#checkout-button').removeAttr("disabled");
+//            $('#errDiv').css('display','block');
+            alert('card not correct');
+//            $('#err').html('Credit card information provided is incorrect.');
 
-    if ($.storage() == true) {
-        localStorage.removeItem('user-name');
-        localStorage.removeItem('user-avatar');
-    } else {
-        function lsnotif() {
-            $('#wrapper').append('<div class="notif orange full slideUp">LocalStorage is disabled. Your settings will not be saved!<span class="icon icon-resistor"></span><p class="nt-det">Upgrade your browser or enable local data storage.</p></div>');
-        };
-        setTimeout(lsnotif, 2000);
-        $.fn.notif();
+            return false;
+
+        }
+        else {
+            var token = response['id'];
+//            alert(token);
+            $('#user_stripe_token').val(token);
+
+            $('#new_user').submit();
+
+        }
+
+        return false;
     }
 
-    $('#login-user .icon-user').click( function() {
-        $('#login-user').toggleClass('showusr');
-    });
+    function checkout(){
 
-    $('#user-select li').click( function() {
-        $('#login-user').removeClass('showreg showusr');
-        $(this).addClass('sel').siblings('.sel').removeClass('sel');
-        var name = $(this).children('span').text();
-        img = $(this).children('img').attr('src');
-        $('#username').val(name).removeClass('error').addClass('valid');
-        $('#avatar img').attr('src', img).fadeIn(300);
-        $('#login-user').find('.input-error').remove();
-        $('#login-pass').find('.input-error').remove();
-        $('#forgot-psw').fadeOut(200);
-        $('#password').removeClass('error').val('').focus();
+        if(Stripe.card.validateCardNumber($('#card_number').val())){
+            Stripe.setPublishableKey('<%=STRIPE_PUBLIC_KEY%>');
+            $('#checkout-button').attr("disabled", "disabled");
+            $("*").css("cursor", "wait");
+//            $('#busy').trigger('click');
+            Stripe.card.createToken({
+                number: $('#card_number').val(),
+                cvc: $('#cvc_code').val(),
+                exp_month: $('#card_month').val(),
+                exp_year: $('#card_year').val()
+            }, stripeResponseHandler);
+        }
+        else{
+            $('#checkout-button').removeAttr("disabled");
+//            $('#errDiv').css('display','block');
+            alert('card not correct');
+//            $('#err').html('Credit card information provided is incorrect.');
+            $("*").css("cursor", "default");
 
-        if ($.storage() == true) {
-            localStorage.setItem('user-name',name);
-            localStorage.setItem('user-avatar',img);
-        };
-    });
+        }
+        return false;
+    }
 
-    var users = ["novalex","m1chael","Johnny 1337"];
-    var username = $('#username');
-    var typeDelay;
-    $(username).keyup(function(){
-        clearTimeout(typeDelay);
-        $('#user-select').find('.sel').removeClass('sel');
-        typeDelay = setTimeout(checkuser, 500);
-    });
-    function checkuser() {
-        var usrval = username.val();
-        usrlen = usrval.length;
-        if ($.inArray(usrval, users) == -1 && usrlen > 0) {
-            $('#avatar img').fadeOut(300);
-            $('#login-user').addClass('showreg').removeClass('showusr');
-            $('#user-select').find('.sel').removeClass('sel');
-        } else if (usrlen == 0) {
-            $('#avatar img').fadeOut(200);
-            $('#login-user').removeClass('showreg');
-        } else {
-            $('#avatar img').fadeIn(300);
-            $('#login-user').removeClass('showreg showusr');
-            $('#user-select li').each( function() {
-                var name = $(this).find('span').text();
-                img = $(this).children('img').attr('src');
-                if (name == usrval) {
-                    $(this).addClass('sel');
-                    $('#avatar img').attr('src', img);
-                }
-            });
-            $('#login-pass').find('.input-error').remove();
-            $('#password').removeClass('error').focus();
-        };
-    };
-
-    $('.input-error').click( function() {
-        var trigger = $(this).data('trigger');
-        $(this).offsetParent().find('input').eq(trigger).focus();
-    });
-
-    $('#password').keyup( function() {
-        if ($(this).val()) $('#forgot-psw').fadeOut(200)
-        else $('#forgot-psw').fadeIn(300);
-    });
-
-    $('#reg-btn').click( function() {
-        $('#login-form').removeClass('show');
-        $('#register-form').addClass('show');
-        $('#reg-user').focus();
-    });
-
-    $('#rb-check').checkfn();
-
-    $('#login-form, #register-form').validate();
 
 </script>
-
-

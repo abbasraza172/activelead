@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
-  layout "application"
+
+  layout "main"
+
+  before_filter :authenticate_user!, :except => [:new,:create]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -17,10 +19,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.skip_confirmation_notification!
     if @user.save
+      user = User.find(@user.id)
+      sign_in(:user, user, :bypass => true)
       flash[:notice] = "Signed in successfully"
-      redirect_to :users_path
+      redirect_to :root #dashboard
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to :back
@@ -28,8 +31,9 @@ class UsersController < ApplicationController
   end
 
 private
+
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,:plan_id,:stripe_token)
   end
 
 end
