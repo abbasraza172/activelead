@@ -23,14 +23,14 @@ class UsersController < ApplicationController
       user = User.find(@user.id)
       sign_in(:user, user, :bypass => true)
       flash[:notice] = "Signed in successfully"
-      redirect_to :root #dashboard
+      redirect_to lists_path #dashboard
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to :back
     end
   end
 
-private
+  private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,:plan_id,:stripe_token)

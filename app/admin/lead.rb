@@ -13,17 +13,6 @@ ActiveAdmin.register Lead do
     column :contact_name
     column :contact_email
     column :contact_number
-    column :address
-    column :city
-    column :state
-    column :zip
-    column :country
-    column :skype
-    column :linked_in
-    column :facebook
-    column :twitter
-    column :created_by_type
-    column :created_by_id
     column :created_at
     actions
   end
@@ -38,7 +27,7 @@ ActiveAdmin.register Lead do
     f.inputs "Lead Details" do
       f.input :title
       f.input :desc
-      f.input :logo
+      f.input :logo , input_html: {"type"=>"filepicker", "data-fp-apikey" => "AnNHBmGXeSW6q5hAqu3dwz", "data-fp-mimetypes" => "image/*", "data-fp-container" => "modal", "onchange" => "loadImage(event.fpfile.url)"},label: 'Input the Logo of your Lead',hint: 'Use this to add images to the rich text below.'
       f.input :lead_type
       f.input :contact_name
       f.input :contact_email

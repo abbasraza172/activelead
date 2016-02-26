@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_one :subscription
   has_one :plan, through: :subscription
 
+  has_many :lists, through: :plan
+  has_many :leads, through: :lists
+
   validates :email, :first_name, :last_name ,presence: true
   validates_format_of  :email, :with  => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates_uniqueness_of :email

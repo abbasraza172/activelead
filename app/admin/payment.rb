@@ -29,8 +29,8 @@ ActiveAdmin.register Payment do
 
   form do |f|
     f.inputs "Payment Details" do
-      f.input :subscription_id, collection: Subscription.select([:card_last_four_digits,:id]).map{|s| [s.card_last_four_digits,s.id]}
-      f.input :plan_id, collection: Plan.select([:name,:id]).map{|p| [p.name,p.id]}
+      f.input :subscription_id,as: :select, collection: Subscription.select([:card_last_four_digits,:id]).map{|s| [s.card_last_four_digits,s.id]}
+      f.input :plan_id,as: :select, collection: Plan.select([:name,:id]).map{|p| [p.name,p.id]}
       f.input :total_amount
       f.input :charged_amount
     end

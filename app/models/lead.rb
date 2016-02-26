@@ -6,4 +6,9 @@ class Lead < ActiveRecord::Base
 
   validates :title, :desc, :lead_type, presence: true
 
+  default_scope ->  {order("created_at DESC")}
+
+  scope :last_30_days, -> {where("DATE(created_at) >= '#{Date.today - 30.days}'")}
+  scope :last_7_days, -> {where("DATE(created_at) >= '#{Date.today - 7.days}'")}
+  scope :recent_most, -> {limit(1)}
 end

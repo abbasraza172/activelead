@@ -21,8 +21,8 @@ ActiveAdmin.register Subscription do
 
   form do |f|
     f.inputs "Subscription Details" do
-      f.input :user_id, collection: User.select([:email,:id]).map{|u| [u.email,s.id]}
-      f.input :plan_id, collection: Plan.select([:name,:id]).map{|p| [p.name,p.id]}
+      f.input :user_id,as: :select, collection: User.select([:email,:id]).map{|u| [u.email,s.id]}
+      f.input :plan_id,as: :select, collection: Plan.select([:name,:id]).map{|p| [p.name,p.id]}
       f.input :status
       f.input :card_last_four_digits
       f.input :card_expiration

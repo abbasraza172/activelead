@@ -5,7 +5,6 @@ class Payment < ActiveRecord::Base
 
   has_one :user, :through => :subscription
 
-
   validates :total_amount, :charged_amount, presence: true
 
 end

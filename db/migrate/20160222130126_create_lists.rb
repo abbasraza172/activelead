@@ -3,7 +3,7 @@ class CreateLists < ActiveRecord::Migration
     create_table :lists do |t|
       t.string :name
       t.text :desc
-      t.string :plan_type
+      t.string :plan_id
 
       t.timestamps null: false
     end

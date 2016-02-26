@@ -56,8 +56,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :users
-
   root 'static#index'
+
+  resources :users
+  resources :lists do
+    resources :leads
+  end
+
 
 end
