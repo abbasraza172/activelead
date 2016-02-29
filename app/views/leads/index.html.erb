@@ -47,7 +47,7 @@
       </li>
 
       <li id="logout">
-        <%= link_to destroy_user_session_path(current_user), :class => 'nav-icon icon-shutdown' do %>
+        <%= link_to(destroy_user_session_path,:method => :delete, :class => 'nav-icon icon-shutdown') do %>
             <span id="span"></span>
         <% end %>
         <ul class="sub-nav">
