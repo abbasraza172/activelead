@@ -16,10 +16,6 @@ class LeadsController < ApplicationController
 
   end
 
-  def create
-    root_path
-  end
-
 private
 
   def set_list

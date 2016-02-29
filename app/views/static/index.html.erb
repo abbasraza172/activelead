@@ -22,9 +22,7 @@
 
     <!-- Slide Model -->
     <div class="slide-model">
-      <!--<img src="/slider/slider_model_01_a.png" alt="App Product Mockup" class="slide-model-a" />-->
       <%=image_tag "slider/slider_model_01_a.png", class: 'slide-model-a', style: ''%>
-      <!--<img src="/slider/slider_model_01_b.png" alt="App Product Mockup" class="slide-model-b" />-->
       <%=image_tag "slider/slider_model_01_b.png", class: 'slide-model-b', style: ''%>
     </div>
 
@@ -477,7 +475,8 @@
             <li><i class="fa fa-folder-open"></i>Sit amet consescetur</li>
             <li><i class="fa fa-road"></i>Adipiscing elit etiam</li>
           </ul>
-          <a href="#" class="button color">Purchase now</a>
+          <!--<a href="#" class="button color">Purchase now</a>-->
+          <%= link_to 'Purchase now', new_user_path(plan_id: 1), class: 'button color' %>
         </div>
       </div>
     </div>
@@ -495,7 +494,8 @@
             <li><i class="fa fa-folder-open"></i>Sit amet consescetur</li>
             <li><i class="fa fa-road"></i>Adipiscing elit etiam</li>
           </ul>
-          <a href="#" class="button color">Purchase now</a>
+          <!--<a href="#" class="button color">Purchase now</a>-->
+          <%= link_to 'Purchase now', new_user_path(plan_id: 2), class: 'button color' %>
         </div>
       </div>
     </div>
@@ -513,7 +513,8 @@
             <li><i class="fa fa-folder-open"></i>Sit amet consescetur</li>
             <li><i class="fa fa-road"></i>Adipiscing elit etiam</li>
           </ul>
-          <a href="#" class="button color">Purchase now</a>
+          <!--<a href="#" class="button color">Purchase now</a>-->
+          <%= link_to 'Purchase now', new_user_path(plan_id: 3), class: 'button color' %>
         </div>
       </div>
     </div>
