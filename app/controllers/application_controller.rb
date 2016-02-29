@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   skip_before_filter :verify_authenticity_token, if: -> { controller_name == 'sessions' && action_name == 'create' }
 
   before_action :load_stats
+  before_action :set_current_user
 
   def load_stats
     @last_30_days = Lead.last_30_days
@@ -36,5 +37,8 @@ class ApplicationController < ActionController::Base
   #   return unless session[:user_id]
   #   @current_user ||= User.find(session[:user_id])
   # end
+  def set_current_user
+   @current_user =  warden.authenticate(:scope => :user)
+  end
 
 end

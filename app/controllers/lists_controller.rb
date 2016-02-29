@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   layout 'admin'
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @list=List.all

@@ -68,7 +68,7 @@
 
       <div id="alerts" class="item">
         <div class="content">
-          <p id="last-chat"><strong><%#= current_user.first_name%></strong>: Last lead added<span class="msg-time"><%#= @recent_most.present? ? time_ago_in_words(@recent_most.created_at) : ''%></span></p>
+          <p id="last-chat"><strong><%= @current_user.first_name%></strong>: Last lead added<span class="msg-time"><%= @recent_most.present? ? time_ago_in_words(@recent_most.created_at) : ''%></span></p>
           <div id="chat-notif">
             <div class="buttons">
               <button id="reply-btn" class="expand-tg gray" data-expand="#chat-reply">Reply</button>
