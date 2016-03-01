@@ -14,7 +14,6 @@
 
           <%= f.password_field :password, class: 'textfield ', placeholder: 'Password', id: 'password' %>
 
-          <%= f.password_field :password_confirmation, class: 'textfield', placeholder: 'Password Confirmation', id: 'password' %>
 
           <%= f.hidden_field :plan_id, value: params[:plan_id] || f.object.plan_id%>
           <%= f.hidden_field :stripe_token%>
@@ -57,12 +56,10 @@
             var token = response['id'];
 //            alert(token);
             $('#user_stripe_token').val(token);
-
             $('#new_user').submit();
 
         }
 
-        return false;
     }
 
     function checkout(){
@@ -71,7 +68,6 @@
             Stripe.setPublishableKey('<%=STRIPE_PUBLIC_KEY%>');
             $('#checkout-button').attr("disabled", "disabled");
             $("*").css("cursor", "wait");
-//            $('#busy').trigger('click');
             Stripe.card.createToken({
                 number: $('#card_number').val(),
                 cvc: $('#cvc_code').val(),
@@ -85,9 +81,8 @@
             alert('card not correct');
 //            $('#err').html('Credit card information provided is incorrect.');
             $("*").css("cursor", "default");
-
+            return false;
         }
-        return false;
     }
 
 

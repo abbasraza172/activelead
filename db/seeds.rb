@@ -6,3 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', name: 'admin')
+Plan.create!(name: 'iOS',price: 99.00 , renewal_period: 30, stripe_id: 1 )
