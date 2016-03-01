@@ -7,13 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%=render :partial => 'layouts/admin_header'%>
-
 <div id="wrapper">
+  <div id="content" class="dash-page">
+    <%=render :partial => 'layouts/admin_header'%>
+    <%= yield %>
+  </div>
   <%=render :partial => 'layouts/admin_left_nav'%>
-  <%= yield %>
 </div>
-
 </body>
 </html>

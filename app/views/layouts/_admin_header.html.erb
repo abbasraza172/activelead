@@ -1,15 +1,14 @@
-<div id="content" class="dash-page">
 
   <div id="dash-bar" class="top-bar box">
 
     <div id="stat1" class="stat up item"><span><%= @last_30_days.count%></span>leads in last 30 days.</div>
-    <div id="stat2" class="stat item"><span>$1200.00</span>payments due</div>
-    <div id="stat3" class="stat down item"><span>25,900</span>unique visitors</div>
+    <div id="stat2" class="stat item"><span>$1200.00</span>payments</div>
+    <div id="stat3" class="stat down item"><span>25,900</span>Suscriptions</div>
     <!--<span class="spark item">5,6,4,2,-2,-4,-2,4,8,6,5,-4,-2,4,6</span>-->
 
     <div id="alerts" class="item">
       <div class="content">
-        <p id="last-chat"><strong><%= @current_user.first_name%></strong>: Last lead added<span class="msg-time"><%= @recent_most.present? ? time_ago_in_words(@recent_most.created_at) : ''%></span></p>
+        <p id="last-chat"><strong><%= @current_user.first_name%></strong>: Last lead added<span class="msg-time"><%= @recent_most.present? ? time_ago_in_words(@recent_most.created_at) + ' ago' : ''%></span></p>
         <!--<div id="chat-notif">-->
           <!--<div class="buttons">-->
             <!--<button id="reply-btn" class="expand-tg gray" data-expand="#chat-reply">Reply</button>-->
@@ -36,10 +35,9 @@
     <div id="dash-cal" class="item">
       <span id="cal-day">19 Nov</span>
       <span class="icon-calendarthree item-icon"></span>
-      <p id="cal-events">No events today</p>
+      <p id="cal-events">No leads today</p>
     </div>
 
     <span id="tb-handle"></span>
 
   </div>
-</div>
