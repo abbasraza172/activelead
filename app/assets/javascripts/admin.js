@@ -19,3 +19,4 @@
 //= require admin/justgage
 //= require admin/tablesorter
 //= require admin/tinymce
+//= require admin/script

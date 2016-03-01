@@ -1,6 +1,45 @@
-<head>
-  <meta charset="UTF-8">
-  <title>ActiveLead</title>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
-  <%= image_tag "favicon.png"%>
-</head>
+<div id="content" class="dash-page">
+
+  <div id="dash-bar" class="top-bar box">
+
+    <div id="stat1" class="stat up item"><span><%= @last_30_days.count%></span>leads in last 30 days.</div>
+    <div id="stat2" class="stat item"><span>$1200.00</span>payments due</div>
+    <div id="stat3" class="stat down item"><span>25,900</span>unique visitors</div>
+    <!--<span class="spark item">5,6,4,2,-2,-4,-2,4,8,6,5,-4,-2,4,6</span>-->
+
+    <div id="alerts" class="item">
+      <div class="content">
+        <p id="last-chat"><strong><%= @current_user.first_name%></strong>: Last lead added<span class="msg-time"><%= @recent_most.present? ? time_ago_in_words(@recent_most.created_at) : ''%></span></p>
+        <!--<div id="chat-notif">-->
+          <!--<div class="buttons">-->
+            <!--<button id="reply-btn" class="expand-tg gray" data-expand="#chat-reply">Reply</button>-->
+            <!--<button id="open-chat" class="gray mod-tg" data-modal="#chat-mod">Open chat</button>-->
+          <!--</div>-->
+          <!--<a href="#" data-expand="#chat-unread" class="expand-tg unread-msg"><strong>2</strong> other unread messages</a>-->
+        <!--</div>-->
+        <span class="icon-chat item-icon"></span>
+        <span class="coll-handle"></span>
+      </div>
+      <div class="expand-content no-pad">
+        <div id="chat-reply">
+          <input type="text" id="chat-reply-input" placeholder="Type in your message">
+          <span id="chat-confirm">Message sent!</span>
+          <span id="chat-load" class="icon-loadingflowcw spinning"></span>
+        </div>
+        <div id="chat-unread">
+          <p><strong>jake.westbury87@al1as.com</strong>Hey man, how's it going? Got a new project, in case you're interested let me know!<span class="msg-time">Yesterday</span></p>
+          <p><strong>Johnny</strong>Guys, some help please? I deleted some files to make room for... uhm... some HD movies, and now I'm getting all kinds of errors.<span class="msg-time">8:53 AM</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="dash-cal" class="item">
+      <span id="cal-day">19 Nov</span>
+      <span class="icon-calendarthree item-icon"></span>
+      <p id="cal-events">No events today</p>
+    </div>
+
+    <span id="tb-handle"></span>
+
+  </div>
+</div>

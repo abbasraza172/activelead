@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def load_stats
     @last_30_days = Lead.last_30_days
-    @recent_most = Lead.recent_most
+    @recent_most = Lead.recent_most.last
   end
 
 
@@ -27,6 +27,5 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
-
 
 end

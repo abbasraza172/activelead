@@ -8,9 +8,12 @@
 </head>
 <body>
 
-<%#=render :partial => 'layouts/admin_header'%>
-<%= yield %>
-<%#=render :partial => 'layouts/admin_left_nav'%>
+<%=render :partial => 'layouts/admin_header'%>
+
+<div id="wrapper">
+  <%=render :partial => 'layouts/admin_left_nav'%>
+  <%= yield %>
+</div>
 
 </body>
 </html>

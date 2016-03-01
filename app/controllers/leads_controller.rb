@@ -1,11 +1,10 @@
 class LeadsController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
-  before_action :set_list
+  # before_action :set_list
 
   def index
-    @leads = @list.leads.all
-    @recent_most = @list.leads.recent_most.last
+
   end
 
   def show

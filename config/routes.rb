@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   root 'static#index'
 
   resources :users
+  resources :leads
   resources :lists do
     resources :leads
   end
