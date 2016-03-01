@@ -1,9 +1,10 @@
 class LeadsController < ApplicationController
   layout 'admin'
-  before_action :authenticate_user!
+  before_action :require_login
   # before_action :set_list
 
   def index
+    @leads = Lead.all
 
   end
 

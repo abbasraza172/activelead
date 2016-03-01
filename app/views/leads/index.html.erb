@@ -8,7 +8,7 @@
         <tr><th>Lead's Title</th><th>Description</th><th>Lead Type</th><th>Created At</th></tr>
         </thead>
         <tbody>
-        <%- current_user.leads.each do |lead| %>
+        <%- @leads.each do |lead| %>
             <tr>
               <td><%= lead.title %></td>
               <td><%= lead.desc %></td>

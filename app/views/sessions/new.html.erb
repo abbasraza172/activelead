@@ -1,0 +1,23 @@
+<section class="subscribe" id="subscribe">
+
+  <div class="container">
+
+    <div class="sixteen columns contact-form" style="padding-top: 60px;">
+      <h2>Login</h2>
+
+      <%= form_for @session ,as: :session,url: sessions_path do |f| %>
+
+          <div id="wrapper">
+
+            <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "textfield", id: 'username' %>
+
+            <%= f.password_field :password, autocomplete: "off", class: 'textfield', placeholder: 'Password', id: 'password' %>
+
+            <%= f.submit "Log in", id: 'login-btn', class: 'button color' %>
+          </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</section>

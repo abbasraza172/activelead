@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions_controller/new'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # devise_for :users,:skip => [:registrations]
@@ -58,8 +62,11 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root 'static#index'
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
 
   resources :users
+  resources :sessions
   resources :leads
   resources :lists do
     resources :leads

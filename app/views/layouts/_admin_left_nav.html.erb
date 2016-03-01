@@ -19,7 +19,9 @@
 
       </li>
       <li class="active">
-        <a href=""><span class="nav-icon icon-dotlist"></span>Lists</a>
+        <%= link_to lists_path, :class => 'nav-icon icon-addtolist' do %>
+            <span id="span"></span>
+        <% end %>
         <ul class="sub-nav">
           <li>Lists</li>
         </ul>
@@ -33,7 +35,7 @@
         </ul>
       </li>
       <li id="logout">
-        <%= link_to destroy_user_session_path(@current_user), :class => 'nav-icon icon-shutdown' do %>
+        <%= link_to logout_path , :class => 'nav-icon icon-shutdown' do %>
             <span id="span"></span>
         <% end %>
         <ul class="sub-nav">
