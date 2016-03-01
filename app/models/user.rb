@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :lists, through: :plan
   has_many :leads, through: :lists
 
-  validates :email, :first_name, :last_name ,presence: true
+  validates :email, presence: true
 
   attr_accessor :plan_id, :credit_card_number, :credit_card_expiry, :credit_card_cvv,:stripe_token
 
