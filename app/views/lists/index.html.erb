@@ -25,7 +25,7 @@
               <span id="profile-av-info">uploaded <%=current_user.updated_at %></span>
               <div class="buttons wide">
                 <!--<button class="change"><span class="icon icon-refresh"></span>Change</button>-->
-                <%= f.filepicker_field :photo_path,class: "icon icon-refresh button" %>
+                <%= f.filepicker_field :photo_path, button_text: 'Choose Image', class: "btn green" %>
               </div>
             </div>
             <div class="inp-cont g8">
@@ -58,8 +58,9 @@
             </div>
 
 
-            <div class=" icon inp-cont multi g15">
-              <%= f.button :button %>
+            <div style="clear:both"></div>
+            <div class="inp-cont multi g3">
+              <%= f.submit 'Submit', class: 'btn submit' %>
             </div>
         <% end %>
       </div>
