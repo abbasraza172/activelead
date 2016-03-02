@@ -3,9 +3,7 @@ class User < ActiveRecord::Base
 
   has_one :subscription
   has_one :plan, through: :subscription
-
-  has_many :lists, through: :plan
-  has_many :leads, through: :lists
+  # has_many :lists, through: :plan
 
   validates :email, presence: true
 
@@ -20,6 +18,14 @@ class User < ActiveRecord::Base
     else
       # self.subscription_id = sub.id
     end
+  end
+
+  def lists
+    List.where(plan_id: plan.id) #use sql in relation.
+  end
+
+  def leads
+    lists.present? ? Lead.where(list_id: [lists.map(&:id)]) : []  #use sql in relation.
   end
 
 end

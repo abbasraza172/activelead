@@ -1,0 +1,32 @@
+<div id="table-box" class="box g16 ov-no">
+  <table id="table" class="tablesorter">
+    <thead class="header">
+    <tr>
+      <th>Total Amount</th>
+      <th>Charged Amount</th>
+      <th>Payment Completed</th>
+      <th>Subscription ID</th>
+      <th>Plan ID</th>
+      <th>Payment Date</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= @payment.total_amount %></td>
+          <td><%= @payment.charged_amount %></td>
+          <td><%= @payment.stripe_response %></td>
+          <td><%= @payment.subscription_id %></td>
+          <td><%= @payment.plan_id %></td>
+          <td><%= @payment.created_at.strftime("%H:%M%p %m/%d/%Y") %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div id="gages" class="hidden">
+  <div id="cpu" class="gage"></div>
+  <div id="ram" class="gage"></div>
+  <div id="mem" class="gage"></div>
+</div>
+

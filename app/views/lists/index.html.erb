@@ -1,3 +1,4 @@
+
 <div id="intro-box" class="box g16">
   <div class="header"><span class="accent grad2">Lists</span></div>
   <%@list.each do |list|%>
@@ -17,8 +18,53 @@
   <div id="ctrl-panel" class="nav-box left vt">
 
     <div class="nav-cont">
+      <div id="profile-set" class="nav-item show">
+        <%= form_for(@user, as: :user, url: list_path(@user)) do |f| %>
+            <div id="profile-av">
+              <%= image_tag current_user.photo_path.present? ? current_user.photo_path : "avatars/alex.jpg"%>
+              <span id="profile-av-info">uploaded <%=current_user.updated_at %></span>
+              <div class="buttons wide">
+                <!--<button class="change"><span class="icon icon-refresh"></span>Change</button>-->
+                <%= f.filepicker_field :photo_path,class: "icon icon-refresh button" %>
+              </div>
+            </div>
+            <div class="inp-cont g8">
+              <label>Name</label>
+              <%= f.text_field :first_name ,:label => false %>
+            </div>
+            <div class="inp-cont g8">
+              <label>E-mail</label>
+              <%= f.email_field :email ,:label => false %>
+            </div>
+            <div class="inp-cont g8">
+              <label>Password</label>
+              <%= f.password_field :password ,:label => false %>
+            </div>
+            <div class="inp-cont multi g8">
+              <label>Contact#</label>
+              <%= f.number_field :phone_number ,:label => false %>
+            </div>
+            <div class="inp-cont multi g8">
+              <label>City</label>
+              <%= f.text_field :city ,:label => false %>
+            </div>
+            <div class="inp-cont multi g8">
+              <label>State</label>
+              <%= f.text_field :state ,:label => false %>
+            </div>
+            <div class="inp-cont multi g8">
+              <label>Country</label>
+              <%= f.text_field :country ,:label => false %>
+            </div>
 
-      <div id="sys-stats" class="nav-item show">
+
+            <div class=" icon inp-cont multi g15">
+              <%= f.button :button %>
+            </div>
+        <% end %>
+      </div>
+
+      <div id="sys-stats" class="nav-item">
         <div id="ver-stats">
           <p><strong>System version:</strong> 1.0</p>
           <p><strong>System status:</strong><span class="icon-ok pos"></span></p>
@@ -62,50 +108,14 @@
         </div>
       </div>
 
-      <div id="profile-set" class="nav-item">
-        <div id="profile-av">
-          <%= image_tag "avatars/alex.jpg"%>
-          <span id="profile-av-info"><strong>alex.jpg</strong> uploaded 12.07.2012</span>
-          <div class="buttons wide">
-            <button class="change"><span class="icon icon-refresh"></span>Change</button>
-            <button class="remove"><span class="icon icon-remove"></span>Remove</button>
-          </div>
-        </div>
 
-        <div id="profile-role" class="inp-cont g16">
-          <label>Role</label>
-          <span class="icon-securityalt-shieldalt"></span><strong>Administrator</strong>
-        </div>
-
-        <div class="inp-cont g8">
-          <label>Name</label>
-          <input placeholder="Name" value="Alex Nitu">
-        </div>
-        <div class="inp-cont g8">
-          <label>E-mail</label>
-          <input placeholder="Email" value="alex@alex.alx">
-        </div>
-        <div class="inp-cont g8">
-          <label>Password</label>
-          <input type="password" placeholder="Password" value="cant cme">
-        </div>
-        <div class="inp-cont multi g8">
-          <label>Birthdate</label>
-          <div class="inp-grp full">
-            <input class="g2" placeholder="Day" value="19">
-            <input class="g2" placeholder="Month" value="11">
-            <input class="g2" placeholder="Year" value="1994">
-          </div>
-        </div>
-
-      </div>
 
     </div>
 
     <ul id="ctrl-nav" class="nav dark">
-      <li class="bdrad-top-l" data-nav="#profile-set"><span class="icon-useralt nav-icon"></span></li>
-      <li class="bdrad-top-l" data-nav="#sys-stats"><span class="icon-taskmanager-logprograms nav-icon"></span></li>
-      <li class="nav-special">
+      <li data-nav="#profile-set"><span class="icon-useralt sel  nav-icon"></span></li>
+      <li class=" bdrad-top-l " data-nav="#sys-stats"><span class="icon-taskmanager-logprograms nav-icon"></span></li>
+      <li class="nav-special no-sel">
         <ul class="no-sel">
           <li id="set-tg" data-modal="#ctrl-set" class="mod-tg ttip" data-ttip-opt="dark" title="Settings"><span class="icon-settingsandroid nav-icon"></span></li>
         </ul>
@@ -113,4 +123,10 @@
     </ul>
   </div>
 </div>
+
+<style>
+    .row1{
+        height: 350px !important;
+    }
+</style>
 

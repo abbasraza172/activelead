@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payments/index'
+
   get 'sessions/new'
 
   get 'sessions_controller/new'
@@ -68,9 +70,8 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :leads
-  resources :lists do
-    resources :leads
-  end
+  resources :lists
+  resources :payments
 
 
 end

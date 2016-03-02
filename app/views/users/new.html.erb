@@ -6,26 +6,27 @@
       <h2>Sign Up and get Leads instantly</h2>
       <%= form_for @user do |f| %>
 
-          <%#= f.text_field :first_name, autofocus: true, class: 'textfield', placeholder: 'First Name', id: 'username' %>
-
-          <%#= f.text_field :last_name, class: 'textfield', placeholder: 'Last Name', id: 'username' %>
+          <%= f.text_field :first_name, autofocus: true, class: 'textfield', placeholder: 'First Name', id: 'username' %>
 
           <%= f.email_field :email, placeholder: "Email", class: "textfield required", id: 'username' %>
 
           <%= f.password_field :password, class: 'textfield ', placeholder: 'Password', id: 'password' %>
 
-
           <%= f.hidden_field :plan_id, value: params[:plan_id] || f.object.plan_id%>
+
           <%= f.hidden_field :stripe_token%>
 
+          <div>
+            
+            <%= text_field_tag :card_number,"", :class=>"textfield credit_card_number",:placeholder => "Enter Card Number", style: "width:66%;display:inline"%>
 
-          <%= text_field_tag :card_number,"", :class=>"textfield credit_card_number",:placeholder => "Enter Card Number"%>
+            <%= text_field_tag :cvc_code, "" ,:class=>"textfield credit_card_cvc",:placeholder => "Enter CVC Code" , style: "width:20%;display:inline;" %>
 
-          <%= text_field_tag :cvc_code, "" ,:class=>"textfield credit_card_cvc",:placeholder => "Enter CVC Code" %>
+          </div>
 
-          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "textfield"} %>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "textfield",style: "width:74%;display:inline"}  %>
 
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",class: "textfield"} %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",class: "textfield",style: "width:25%;display:inline"} %>
 
 
           <%= f.button "Sign up", class: 'button sign-it-up',:onclick => "checkout();return false;",:id =>"checkout-button"%>

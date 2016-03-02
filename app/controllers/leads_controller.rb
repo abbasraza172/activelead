@@ -4,7 +4,7 @@ class LeadsController < ApplicationController
   # before_action :set_list
 
   def index
-    @leads = Lead.all
+    @leads = current_user.leads
 
   end
 
