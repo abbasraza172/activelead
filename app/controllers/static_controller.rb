@@ -3,7 +3,7 @@ class StaticController < ApplicationController
   layout "main"
 
   def index
-    # render :layout => false
+    @lead= Lead.new
   end
 
 end

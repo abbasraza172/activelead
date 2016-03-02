@@ -4,7 +4,7 @@ class Lead < ActiveRecord::Base
 
   belongs_to :creator, :polymorphic => true
 
-  validates :title, :desc, :lead_type, presence: true
+  validates :contact_name, :contact_email, :desc, :budget, presence: true
 
   default_scope ->  {order("created_at DESC")}
 

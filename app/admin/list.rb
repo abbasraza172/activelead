@@ -1,6 +1,26 @@
 ActiveAdmin.register List do
   permit_params :name, :desc, :plan_id, list_leads_attributes: [:_destroy,:lead_id,:id], list_users_attributes: [:_destroy, :user_id,:id]
 
+  action_item only: :show do
+    link_to('Init TEST', set_test_admin_list_path(list), method: :get) if list.draft?
+  end
+
+  member_action :set_test, method: :get do
+    list = List.where(id: params[:id]).first
+    list.update_attribute(:status,:test)
+    redirect_to :back, notice: "Test Initialized"
+  end
+
+  action_item only: :show do
+    link_to('Confirm', set_confirmed_admin_list_path(list), method: :get) if list.test?
+  end
+
+  member_action :set_confirmed, method: :get do
+    list = List.where(id: params[:id]).first
+    list.update_attribute(:status,:ready)
+    redirect_to :back, notice: "List sent to all users. "
+  end
+
   index do
     selectable_column
     id_column

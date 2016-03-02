@@ -1,6 +1,7 @@
 class Plan < ActiveRecord::Base
 
   has_many :subscriptions, dependent: :destroy
+  has_many :users, through: :subscriptions
   has_many :lists
 
   validates :name, :price, :renewal_period ,presence: true

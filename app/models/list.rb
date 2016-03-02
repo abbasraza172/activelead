@@ -14,4 +14,21 @@ class List < ActiveRecord::Base
 
   default_scope ->  {order("created_at DESC")}
 
+  enum status: [:draft,:test, :ready, :sent]
+
+  before_update :send_leads_to_users
+
+  def send_leads_to_users
+    if status == :test
+      AdminUser.all.each do |user|
+        # admin user email
+      end
+    elsif status == :ready
+      plan.users.each do |user|
+        #send email to user
+      end
+      self.status = :sent
+    end
+  end
+
 end
