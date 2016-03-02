@@ -1,124 +1,116 @@
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div id="intro-box" class="box g16">
-      <div class="header"><span class="accent grad2">Lists</span></div>
-      <%@list.each do |list|%>
-          <div id="intro" class="content scroll ov-no" style="height: 100px;">
-            <div class="scroll-cont">
-              <div class="row">
-                <span class="icon icon-list"></span><h2><%= list.name %></h2>
-                <p><%= list.desc %></p>
-              </div>
-            </div>
+<div id="intro-box" class="box g16">
+  <div class="header"><span class="accent grad2">Lists</span></div>
+  <%@list.each do |list|%>
+      <div id="intro" class="content scroll ov-no" style="height: 100px;">
+        <div class="scroll-cont">
+          <div class="row">
+            <span class="icon icon-list"></span><h2><%= list.name %></h2>
+            <p><%= list.desc %></p>
           </div>
-      <% end %>
-    </div>
+        </div>
+      </div>
+  <% end %>
+</div>
 
 
-    <div id="ctrl-box" class="box g16 row1">
-      <div id="ctrl-panel" class="nav-box left vt">
+<div id="ctrl-box" class="box g16 row1">
+  <div id="ctrl-panel" class="nav-box left vt">
 
-        <div class="nav-cont">
+    <div class="nav-cont">
 
-          <div id="sys-stats" class="nav-item show">
-            <div id="ver-stats">
-              <p><strong>System version:</strong> 1.0</p>
-              <p><strong>System status:</strong><span class="icon-ok pos"></span></p>
-              <p><strong>Auto backup:</strong><span class="icon-ok pos"></span></p>
-              <p><strong>Apache:</strong><span class="icon-ok pos"></span> 2.4</p>
-              <p><strong>PHP:</strong><span class="icon-ok pos"></span> 5.5.4</p>
-              <p><strong>MySQL:</strong><span class="icon-ok pos"></span> 5.6</p>
-            </div>
-            <div id="sys-pbars">
-              <div class="prog-bar">
-                <span>Server disk space</span>
-                <div style="width:40%;" class="green grad2"></div>
-              </div>
-              <div class="prog-bar">
-                <span>Server RAM usage</span>
-                <div style="width:50%;" class="blue grad2"></div>
-              </div>
-              <div class="prog-bar">
-                <span>Server CPU usage</span>
-                <div style="width:30%;" class="orange grad2"></div>
-              </div>
-              <div class="prog-bar">
-                <span>Bandwidth usage</span>
-                <div style="width:60%;" class="red grad2"></div>
-              </div>
-            </div>
-            <div id="sys-updates">
-              <p id="sys-up-ok">
-                <span class="icon-ok pos"></span> Everything is up to date
-              </p>
-              <p id="sys-up-check" style="display: none;">
-                <span class="icon-circleselection spinning"></span> Checking for updates...
-              </p>
-              <button id="chk-up-btn" class="mini grad2"><span class="icon icon-terminalalt"></span>Check for updates</button>
-            </div>
-
-            <div id="gages">
-              <div id="cpu" class="gage"></div>
-              <div id="ram" class="gage"></div>
-              <div id="mem" class="gage"></div>
-            </div>
+      <div id="sys-stats" class="nav-item show">
+        <div id="ver-stats">
+          <p><strong>System version:</strong> 1.0</p>
+          <p><strong>System status:</strong><span class="icon-ok pos"></span></p>
+          <p><strong>Auto backup:</strong><span class="icon-ok pos"></span></p>
+          <p><strong>Apache:</strong><span class="icon-ok pos"></span> 2.4</p>
+          <p><strong>PHP:</strong><span class="icon-ok pos"></span> 5.5.4</p>
+          <p><strong>MySQL:</strong><span class="icon-ok pos"></span> 5.6</p>
+        </div>
+        <div id="sys-pbars">
+          <div class="prog-bar">
+            <span>Server disk space</span>
+            <div style="width:40%;" class="green grad2"></div>
           </div>
-
-          <div id="profile-set" class="nav-item">
-            <div id="profile-av">
-              <%= image_tag "avatars/alex.jpg"%>
-              <span id="profile-av-info"><strong>alex.jpg</strong> uploaded 12.07.2012</span>
-              <div class="buttons wide">
-                <button class="change"><span class="icon icon-refresh"></span>Change</button>
-                <button class="remove"><span class="icon icon-remove"></span>Remove</button>
-              </div>
-            </div>
-
-            <div id="profile-role" class="inp-cont g16">
-              <label>Role</label>
-              <span class="icon-securityalt-shieldalt"></span><strong>Administrator</strong>
-            </div>
-
-            <div class="inp-cont g8">
-              <label>Name</label>
-              <input placeholder="Name" value="Alex Nitu">
-            </div>
-            <div class="inp-cont g8">
-              <label>E-mail</label>
-              <input placeholder="Email" value="alex@alex.alx">
-            </div>
-            <div class="inp-cont g8">
-              <label>Password</label>
-              <input type="password" placeholder="Password" value="cant cme">
-            </div>
-            <div class="inp-cont multi g8">
-              <label>Birthdate</label>
-              <div class="inp-grp full">
-                <input class="g2" placeholder="Day" value="19">
-                <input class="g2" placeholder="Month" value="11">
-                <input class="g2" placeholder="Year" value="1994">
-              </div>
-            </div>
-
+          <div class="prog-bar">
+            <span>Server RAM usage</span>
+            <div style="width:50%;" class="blue grad2"></div>
           </div>
-
+          <div class="prog-bar">
+            <span>Server CPU usage</span>
+            <div style="width:30%;" class="orange grad2"></div>
+          </div>
+          <div class="prog-bar">
+            <span>Bandwidth usage</span>
+            <div style="width:60%;" class="red grad2"></div>
+          </div>
+        </div>
+        <div id="sys-updates">
+          <p id="sys-up-ok">
+            <span class="icon-ok pos"></span> Everything is up to date
+          </p>
+          <p id="sys-up-check" style="display: none;">
+            <span class="icon-circleselection spinning"></span> Checking for updates...
+          </p>
+          <button id="chk-up-btn" class="mini grad2"><span class="icon icon-terminalalt"></span>Check for updates</button>
         </div>
 
-        <ul id="ctrl-nav" class="nav dark">
-          <li class="bdrad-top-l sel" data-nav="#sys-stats"><span class="icon-taskmanager-logprograms nav-icon"></span></li>
-          <li data-nav="#profile-set"><span class="icon-useralt nav-icon"></span></li>
-          <li class="nav-special no-sel">
-            <ul class="no-sel">
-              <li id="set-tg" data-modal="#ctrl-set" class="mod-tg ttip" data-ttip-opt="dark" title="Settings"><span class="icon-settingsandroid nav-icon"></span></li>
-            </ul>
-          </li>
-        </ul>
+        <div id="gages">
+          <div id="cpu" class="gage"></div>
+          <div id="ram" class="gage"></div>
+          <div id="mem" class="gage"></div>
+        </div>
       </div>
+
+      <div id="profile-set" class="nav-item">
+        <div id="profile-av">
+          <%= image_tag "avatars/alex.jpg"%>
+          <span id="profile-av-info"><strong>alex.jpg</strong> uploaded 12.07.2012</span>
+          <div class="buttons wide">
+            <button class="change"><span class="icon icon-refresh"></span>Change</button>
+            <button class="remove"><span class="icon icon-remove"></span>Remove</button>
+          </div>
+        </div>
+
+        <div id="profile-role" class="inp-cont g16">
+          <label>Role</label>
+          <span class="icon-securityalt-shieldalt"></span><strong>Administrator</strong>
+        </div>
+
+        <div class="inp-cont g8">
+          <label>Name</label>
+          <input placeholder="Name" value="Alex Nitu">
+        </div>
+        <div class="inp-cont g8">
+          <label>E-mail</label>
+          <input placeholder="Email" value="alex@alex.alx">
+        </div>
+        <div class="inp-cont g8">
+          <label>Password</label>
+          <input type="password" placeholder="Password" value="cant cme">
+        </div>
+        <div class="inp-cont multi g8">
+          <label>Birthdate</label>
+          <div class="inp-grp full">
+            <input class="g2" placeholder="Day" value="19">
+            <input class="g2" placeholder="Month" value="11">
+            <input class="g2" placeholder="Year" value="1994">
+          </div>
+        </div>
+
+      </div>
+
     </div>
+
+    <ul id="ctrl-nav" class="nav dark">
+      <li class="bdrad-top-l" data-nav="#profile-set"><span class="icon-useralt nav-icon"></span></li>
+      <li class="bdrad-top-l" data-nav="#sys-stats"><span class="icon-taskmanager-logprograms nav-icon"></span></li>
+      <li class="nav-special">
+        <ul class="no-sel">
+          <li id="set-tg" data-modal="#ctrl-set" class="mod-tg ttip" data-ttip-opt="dark" title="Settings"><span class="icon-settingsandroid nav-icon"></span></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
 
