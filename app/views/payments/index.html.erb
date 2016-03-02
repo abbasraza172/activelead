@@ -11,6 +11,7 @@
     </tr>
     </thead>
     <tbody>
+    <% if @payment.present? %>
         <tr>
           <td><%= @payment.total_amount %></td>
           <td><%= @payment.charged_amount %></td>
@@ -19,6 +20,7 @@
           <td><%= @payment.plan_id %></td>
           <td><%= @payment.created_at.strftime("%H:%M%p %m/%d/%Y") %></td>
         </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

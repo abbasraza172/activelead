@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   layout "main"
 
-  before_filter :require_login, :except => [:new,:create]
-
+  before_action :require_login, :except => [:new,:create]
+  before_action :set_plan, only: [:new,:create]
   def index
 
   end
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_subscription
   end
 
   def create
@@ -21,24 +22,24 @@ class UsersController < ApplicationController
     if @user.save
       auto_login(@user)
       flash[:notice] = "Signed in successfully"
-      puts" ** #{current_user.inspect}"
       redirect_to lists_path #dashboard
     else
       flash[:errors] = @user.errors.full_messages
-      redirect_to :back
+      render :new
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password,:plan_id,:stripe_token)
+    params.require(:user).permit(:first_name, :last_name, :email, :password,subscription_attributes: [:plan_id,:stripe_token,:id])
   end
 
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.for(:sign_up) do |u|
-  #     u.permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :avatar, :avatar_cache)
-  #   end
-  # end
-
+  def set_plan
+    plan_id = params[:user].present? ? params[:user][:subscription_attributes][:plan_id] : params[:plan_id]
+    @plan = plan_id.present? ? Plan.find_by(id: plan_id) : nil
+    if @plan.blank?
+      redirect_to :root
+    end
+  end
 end
