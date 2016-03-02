@@ -16,32 +16,34 @@
       <ul class="sub-nav">
         <li>Dashboard</li>
       </ul>
-
+      Dashboard
     </li>
+
     <li>
-      <%= link_to lists_path, :class => 'nav-icon icon-dotlist' do %>
-          <span id="span"></span>
-      <% end %>
+      <%= link_to '<span class="nav-icon icon-dotlist"></span>Lists'.html_safe, lists_path %>
       <ul class="sub-nav">
         <li>Lists</li>
       </ul>
     </li>
     <li>
-      <%= link_to leads_path, :class => 'nav-icon icon-addtolist' do %>
-          <span id="span"></span>
-      <% end %>
+      <%= link_to '<span class="nav-icon icon-cloud"></span>Leads'.html_safe, leads_path %>
       <ul class="sub-nav">
         <li>Leads</li>
       </ul>
     </li>
+    <li>
+      <%= link_to '<span class="nav-icon icon-moneybag"></span>Payments'.html_safe, payments_path %>
+      <ul class="sub-nav">
+        <li>Payments</li>
+      </ul>
+    </li>
     <li id="logout">
-      <%= link_to logout_path , :class => 'nav-icon icon-shutdown' do %>
-          <span id="span"></span>
-      <% end %>
+      <%= link_to '<span class="nav-icon icon-shutdown"></span>Logout'.html_safe, logout_path %>
       <ul class="sub-nav">
         <li>Logout</li>
       </ul>
     </li>
+
   </ul>
 </div>
 
