@@ -5,6 +5,12 @@ class ListsController < ApplicationController
   def index
     @list=List.all
     @user = current_user
+    customer = Stripe::Customer.retrieve(current_user.subscription.stripe_customer_id)
+    card = Stripe::Customer.retrieve(current_user.subscription.stripe_customer_id)
+  end
+
+  def show
+    @list = List.find(params[:id])
   end
 
   def update

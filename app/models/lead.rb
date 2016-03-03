@@ -1,10 +1,13 @@
 class Lead < ActiveRecord::Base
 
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   belongs_to :creator, :polymorphic => true
 
   validates :contact_name, :contact_email, :desc, :budget, presence: true
+
+  accepts_nested_attributes_for :contacts, :allow_destroy => true
 
   default_scope ->  {order("created_at DESC")}
 

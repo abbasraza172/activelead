@@ -1,0 +1,52 @@
+<div class="g16 box">
+  <div style="margin: 20px">
+    <% @list.leads.each do |lead| %>
+
+          <% unless lead.logo.nil? %>
+              <div class="g16 pull-right">
+                <div class="g3">
+                <%= image_tag(lead.logo,height: 100,width: 120) %>
+                </div>
+
+                <div class="g6">
+                  <ul class="social-network-links ">
+                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                    <!--<li><a href="#"><i class="fa fa-flickr"></i></a></li>-->
+                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                    <!--<li><a href="#"><i class="fa fa-tumblr-square"></i></a></li>-->
+                  </ul>
+                </div>
+              </div>
+          <% end %>
+        <div class="box g12">
+          <div class="g12 box">
+            <h1>About</h1>
+            <%= lead.desc %>
+          </div>
+          <div >
+            <% lead.contacts.each do |contact| %>
+                <div class="g6">
+                  <h1><%= contact.name %></h1>
+                  <h2><%= contact.email %></h2>
+                  <h2><%= contact.phone %></h2>
+                  <p><%= contact.title%></p>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+    <div id="gages" class="hidden" >
+      <div id="cpu" class="gage"></div>
+      <div id="ram" class="gage"></div>
+      <div id="mem" class="gage"></div>
+    </div>
+  </div>
+</div>
+<style>
+  .social-network-links {
+      display: inline-flex !important;}
+  .social-network-links li {
+      margin: 5px !important;}
+
+</style>
