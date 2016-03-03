@@ -6,7 +6,7 @@ class LeadsController < ApplicationController
   def index
     @leads = current_user.leads
   end
-  
+
 
   def new
     @lead= Lead.new
@@ -18,7 +18,6 @@ class LeadsController < ApplicationController
       flash[:notice] = "Lead created successfully"
       redirect_to :root
     else
-      sdfsdfsfdsfsdfsf
       flash[:errors] = @lead.errors.full_messages
       redirect_to :root
     end
