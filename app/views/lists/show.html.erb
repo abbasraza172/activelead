@@ -1,52 +1,88 @@
-<div class="g16 box">
-  <div style="margin: 20px">
-    <% @list.leads.each do |lead| %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>ActiveLead</title>
 
-          <% unless lead.logo.nil? %>
-              <div class="g16 pull-right">
-                <div class="g3">
-                <%= image_tag(lead.logo,height: 100,width: 120) %>
-                </div>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-                <div class="g6">
-                  <ul class="social-network-links ">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                    <!--<li><a href="#"><i class="fa fa-flickr"></i></a></li>-->
-                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-                    <!--<li><a href="#"><i class="fa fa-tumblr-square"></i></a></li>-->
-                  </ul>
-                </div>
-              </div>
-          <% end %>
-        <div class="box g12">
-          <div class="g12 box">
-            <h1>About</h1>
-            <%= lead.desc %>
-          </div>
-          <div >
-            <% lead.contacts.each do |contact| %>
-                <div class="g6">
-                  <h1><%= contact.name %></h1>
-                  <h2><%= contact.email %></h2>
-                  <h2><%= contact.phone %></h2>
-                  <p><%= contact.title%></p>
-                </div>
-            <% end %>
-          </div>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+
+      .social-networks i {font-size: 20px; padding: 20px 10px; color: #4B97ED; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}
+
+      .social-network-links {display: table; margin: 0 auto;}
+
+      .social-network-links li {float: left; margin-bottom: 0;}
+
+      .social-network-links i:hover {line-height: 20px;}
+
+  </style>
+
+</head>
+
+<body class="col-md-9 col-md-offset-3 container" style="margin-top: 80px">
+
+
+<% @list.leads.each do |lead| %>
+<div class="row">
+    <div style="display: flex">
+      <div style="width: 20%;">
+        <%= lead.logo.present? ? image_tag(lead.logo,height: 140,width: 140) : image_tag('avatars/alex.jpg',height: 100,width: 120) %>
+      </div>
+
+      <div style="width: 30%;">
+        <%= lead.title.humanize %>
+        <div>
+          <%= lead.lead_type %>
         </div>
-    <% end %>
-    <div id="gages" class="hidden" >
-      <div id="cpu" class="gage"></div>
-      <div id="ram" class="gage"></div>
-      <div id="mem" class="gage"></div>
+        <section class="social-networks" id="social-networks">
+          <div class="social-network-links" style="display: flex">
+            <div><a href="<%= lead.facebook %>" target="_blank"><i class="fa fa-facebook"></i></a></div>
+            <div><a href="<%= lead.twitter %>" target="_blank"><i class="fa fa-twitter"></i></a></div>
+            <div><a href="<%= lead.linked_in %>" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
-</div>
-<style>
-  .social-network-links {
-      display: inline-flex !important;}
-  .social-network-links li {
-      margin: 5px !important;}
+    <div>
+      <h3>About <i class="fa fa-user"></i></h3>
+      <p>
+        <%= lead.desc %>
+      </p>
+    </div>
 
-</style>
+    <div>
+      <h3>Contacts <i class="fa fa-mobile"></i> </h3>
+    </div>
+
+    <% lead.contacts.each do |contact| %>
+
+        <div class="col-md-3">
+          <p>
+            <strong><%= contact.title.to_s + ' ' + contact.name.to_s %></strong>
+          </p>
+          <p>
+            <%= contact.email%> <i class="fa fa-envelope"></i>
+          </p>
+          <p>
+            <%= contact.phone %> <i class="fa fa-phone"></i>
+          </p>
+        </div>
+    <%end%>
+</div>
+<br>
+<br>
+<%end%>
+
+</body>
+</html>

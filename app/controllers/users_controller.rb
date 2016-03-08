@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password,subscription_attributes: [:plan_id,:stripe_token,:id])
+    params.require(:user).permit(:name, :email, :password,subscription_attributes: [:plan_id,:stripe_token,:id])
   end
 
   def set_plan

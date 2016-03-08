@@ -16,7 +16,7 @@ class Subscription < ActiveRecord::Base
           email: user.email,
           plan: plan.stripe_id,
           card: stripe_token)
-      assign_attributes(stripe_customer_id: customer.id, stripe_response: customer.to_json, card_last_four_digits: "**** **** **** #{customer.sources.data.first.last4}" )
+      assign_attributes(stripe_customer_id: customer.id,  stripe_response: customer.to_json, card_last_four_digits: "**** **** **** #{customer.sources.data.first.last4}" )
     rescue Exception => ex
       errors.add(:base, 'Could not charge the card')
       return false

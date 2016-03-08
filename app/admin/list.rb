@@ -40,8 +40,7 @@ ActiveAdmin.register List do
       f.input :name
       f.input :desc
       f.input :plan
-    end
-
+      end
     f.inputs "List Leads" do
       f.has_many :list_leads do |ll|
         ll.input :lead_id ,as: :select, collection: Lead.all

@@ -1,16 +1,19 @@
 class ListsController < ApplicationController
   layout 'admin'
-  before_action :require_login
+  before_action :require_login, except:[:show]
 
   def index
     @list=List.all
     @user = current_user
+    @subscription = @user.subscription
+    @plan=@user.plan
     customer = Stripe::Customer.retrieve(current_user.subscription.stripe_customer_id)
     card = Stripe::Customer.retrieve(current_user.subscription.stripe_customer_id)
   end
 
   def show
     @list = List.find(params[:id])
+    render layout: false
   end
 
   def update
@@ -34,7 +37,7 @@ class ListsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password,:plan_id,:stripe_token , :photo_path,:phone_number,:city,:state,:country)
+    params.require(:user).permit(:name, :email, :password,:plan_id,:stripe_token,:list_id , :photo_path,:phone_number,:city,:state,:country, subscription_attributes: [:id, :card_last_four_digits, :card_expiration], user_attributes: [:id, :name, :email, :password, :phone_number, :address, :city, :state, :country], plan_attributes: [:id, :name, :price, :renewal_period])
   end
 
 

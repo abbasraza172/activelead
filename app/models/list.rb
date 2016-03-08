@@ -19,13 +19,15 @@ class List < ActiveRecord::Base
   before_update :send_leads_to_users
 
   def send_leads_to_users
-    if status == :test
+    if status == "test"
       AdminUser.all.each do |user|
         # admin user email
+        UserMailer.list_subscription(user,self).deliver_now
       end
-    elsif status == :ready
+    elsif status == "ready"
       plan.users.each do |user|
         #send email to user
+        UserMailer.list_subscription(user,self).deliver_now
       end
       self.status = :sent
     end

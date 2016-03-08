@@ -8,7 +8,6 @@ ActiveAdmin.register Lead do
     id_column
     column :title
     column :desc
-    column :logo
     column :lead_type
     column :contact_name
     column :contact_email
@@ -27,7 +26,7 @@ ActiveAdmin.register Lead do
     f.inputs "Lead Details" do
       f.input :title
       f.input :desc
-      f.input :logo , input_html: {"type"=>"filepicker", "data-fp-apikey" => "AnNHBmGXeSW6q5hAqu3dwz", "data-fp-mimetypes" => "image/*", "data-fp-container" => "modal", "onchange" => "loadImage(event.fpfile.url)"},label: 'Input the Logo of your Lead',hint: 'Use this to add images to the rich text below.'
+      f.input :logo , input_html: {"type"=>"filepicker", "data-fp-apikey" => "AdCCIw6FTLO9F17B7mPc3z", "data-fp-mimetypes" => "image/*", "data-fp-container" => "modal", "onchange" => "loadImage(event.fpfile.url)"},label: 'Input the Logo of your Lead',hint: 'Use this to add images to the rich text below.'
       f.input :lead_type
       f.input :budget
       f.input :contact_name

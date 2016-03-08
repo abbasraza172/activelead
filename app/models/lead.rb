@@ -2,6 +2,7 @@ class Lead < ActiveRecord::Base
 
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :tags
 
   belongs_to :creator, :polymorphic => true
 

@@ -1,7 +1,3 @@
-.login-body1 {
-  height: 245px;
-}
-
 .sign-it-up
 {
   background: #4c4949 none repeat scroll 0 0;
@@ -12,3 +8,17 @@
 .wrapper1 {
   top: 42%!important;
 }
+
+
+/*-------------------------*/
+/* SOCIAL NETWORKS */
+/*-------------------------*/
+.social-networks {background: url(asset-path('tile.jpg')) repeat #f0f0f0;}
+
+.social-networks i {font-size: 40px; padding: 20px 10px; color: #DAD7D7; line-height: 50px; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}
+
+.social-network-links {display: table; margin: 0 auto;}
+
+.social-network-links li {float: left; margin-bottom: 0;}
+
+.social-network-links i:hover {line-height: 40px;}

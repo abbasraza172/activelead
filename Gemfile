@@ -47,7 +47,8 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 gem "state_machine"
 gem 'stripe'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'acts-as-taggable-on'
 
 gem 'mailgun_rails'
@@ -59,6 +60,7 @@ group :development do
   gem "better_errors", '~> 1.1.0'
   gem "binding_of_caller"
   gem "rails-erd"
+  gem 'letter_opener'
 end
 
 

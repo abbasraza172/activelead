@@ -22,7 +22,7 @@
           <td><%= lead.contact_name %></td>
           <td><%= lead.contact_email %></td>
           <td><%= lead.contact_number %></td>
-          <td><%= lead.address + ', ' + lead.city + ', ' + lead.state + lead.zip + ', ' + lead.country %></td>
+          <td><%= lead.address.to_s + ', ' + lead.city.to_s + ', ' + lead.state.to_s + lead.zip.to_s + ', ' + lead.country.to_s %></td>
           <td><%= link_to  'Facebook', lead.facebook, target:"_blank" %></td>
           <td><%= link_to 'Twitter', lead.twitter, target:"_blank"  %></td>
           <td><%= link_to 'LinkedIn', lead.linked_in, target:"_blank"  %></td>
